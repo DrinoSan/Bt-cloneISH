@@ -23,7 +23,6 @@ class Wallet:
     __slots__='_pub', '_priv'
 
     def __init__(self, pub=None, priv=None):
-        print(pub, " TROLL ", priv)
         if pub:
             self._pub = Address(pub)
             self._priv = rsa.PrivateKey.load_pkcs1(priv)
@@ -57,5 +56,3 @@ class Wallet:
     def sign(self, hash):
         return binascii.hexlify(rsa.sign(hash, self._priv, 'SHA-256')).decode()
 
-w = Wallet.create()
-print(w.address)
